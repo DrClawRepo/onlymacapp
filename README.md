@@ -1,13 +1,25 @@
-# SoloMacApp marketing site
+# OnlyMacApp Site
 
-Repo B is a lightweight, static marketing-site skeleton. It intentionally contains no unverified feature claims, checkout, tracking, or app download link. Confirm app workflows and approve copy before adding SEO pages or pricing.
+Marketing + paywall landing page for OnlyMacApp. Static HTML/CSS, no build step, no tracking.
 
-## Preview
+## Structure
 
-Open `index.html` in a browser, or serve this directory with any static file server. No build step or dependencies are needed.
+- `index.html` — hero, tool categories, experience, privacy, pricing, FAQ, footer
+- `styles.css` — full styling
+- `assets/img/` — app icon at 1024/512/128
 
-## Next gated work
+## Paywall wiring (when launching)
 
-1. Confirm which app tools pass end-to-end testing.
-2. Approve product positioning and truthful capability copy.
-3. Add per-tool SEO pages and only then evaluate checkout/analytics.
+1. Create a Stripe Payment Link (or Lemon Squeezy / Gumroad product) for $19.99.
+2. Host `OnlyMacApp.dmg` privately (S3/R2 signed URLs, or Stripe's built-in file delivery).
+3. Replace the `[data-checkout]` handler in `index.html` with your checkout URL.
+4. Host anywhere static: GitHub Pages, Netlify, Cloudflare Pages, Vercel.
+
+Prototype note: the buy button currently shows a placeholder alert instead of real checkout.
+
+## Local preview
+
+```sh
+cd OnlyMacApp-site && python3 -m http.server 8080
+# open http://localhost:8080
+```
